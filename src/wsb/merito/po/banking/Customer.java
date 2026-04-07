@@ -1,19 +1,27 @@
 package wsb.merito.po.banking;
 
-public class Customer {
+import java.util.ArrayList;
 
+public class Customer {
 
     private final String firsName;
     private final String lastName;
 
-    private Account account = null;
+    final private ArrayList<Account> accounts = new ArrayList<>();
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public int getNumberOfAccounts() {
+        return accounts.size();
     }
 
-    public Account getAccount() {
-        return account;
+    public void addAccount(Account a) {
+        accounts.add(a);
+    }
+
+    public Account getAccount(int i) {
+        if (i >= getNumberOfAccounts()) {
+            return null;
+        }
+        return accounts.get(i);
     }
 
     public Customer(String firsName, String lastName) {
@@ -34,7 +42,7 @@ public class Customer {
         return "Customer{" +
                 "firsName='" + getFirsName() + '\'' +
                 ", lastName='" + getLastName() + '\'' +
-                ", account=" + account +
+                ", number of accounts=" + getNumberOfAccounts() +
                 '}';
     }
 }

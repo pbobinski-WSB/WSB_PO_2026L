@@ -1,6 +1,5 @@
 package wsb.merito.po.banking;
 
-
 public class Account {
 
     private double balance;
@@ -9,6 +8,7 @@ public class Account {
      * Constructs a bank account with a zero balance.
      */
     public Account() {
+
         balance = 0;
     }
 
@@ -18,25 +18,36 @@ public class Account {
      * @param balance the initial balance
      */
     public Account(double balance) {
+
         this.balance = balance;
     }
 
     /**
      * Deposits money into the bank account.
      *
-     * @param amount the amount to deposit
+     * @param balance the amount to deposit
      */
-    public void deposit (double amount) {
-        balance += amount; // balance = balance + amount
+    public boolean deposit(double balance) {
+        //proste zabezpieczenie
+        if (balance < 0) {
+            return false;
+        }
+        this.balance += balance; // balance = balance + amount
+        return true;
     }
 
     /**
      * Withdraws money from the bank account.
      *
-     * @param amount the amount to withdraw
+     * @param balance the amount to withdraw
      */
-    public void withdraw (double amount) {
-        balance -= amount; // balance = balance - amount
+    public boolean withdraw(double balance) {
+        //proste zabezpieczenie
+        if (balance > this.balance) {
+            return false;
+        }
+        this.balance -= balance; // balance = balance - amount
+        return true;
     }
 
     /**
@@ -45,6 +56,7 @@ public class Account {
      * @return the current balance
      */
     public double getBalance() {
+
         return balance;
     }
 
@@ -52,6 +64,7 @@ public class Account {
     public String toString() {
         return "Wartość konta = " + this.balance;
     }
+
 
 }
 
