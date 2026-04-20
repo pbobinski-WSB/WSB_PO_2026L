@@ -1,4 +1,4 @@
-package wsb.merito.po.banking;
+package wsb.merito.po.banking.domain;
 
 public class SavingsAccount extends Account {
 
@@ -15,9 +15,9 @@ public class SavingsAccount extends Account {
 
     @Override
     public String toString() {
-        return super.toString() +
-                " SavingsAccount{" +
-                "interestRate=" + interestRate +
-                "} ";
+        return " SavingsAccount{" +
+                '}' + super.toString();
     }
+
+
 }

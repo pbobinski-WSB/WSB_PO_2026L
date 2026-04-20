@@ -1,4 +1,4 @@
-package wsb.merito.po.banking;
+package wsb.merito.po.banking.domain;
 
 public class CheckingAccount extends Account {
 
@@ -14,9 +14,9 @@ public class CheckingAccount extends Account {
     }
 
     @Override
-    public boolean withdraw(double amount) {
+    public void withdraw(double amount) throws OverdraftException{
         if (amount > getBalance() + overdraftProtection) {
-            return false;
+            throw new OverdraftException("przekroczono saldo i limit",amount - (getBalance() + overdraftProtection));
         }
         if (amount > getBalance()) {
             //użyć limitu
@@ -26,14 +26,15 @@ public class CheckingAccount extends Account {
         } else {
             super.withdraw(amount);
         }
-        return true;
+
     }
 
     @Override
     public String toString() {
-        return super.toString() +
-                " CheckingAccount{" +
+        return " CheckingAccount{" +
                 "overdraftProtection=" + overdraftProtection +
-                '}';
+                '}' + super.toString();
     }
+
+
 }

@@ -1,4 +1,4 @@
-package wsb.merito.po.banking;
+package wsb.merito.po.banking.domain;
 
 import java.util.ArrayList;
 
@@ -45,4 +45,5 @@ public class Customer {
                 ", number of accounts=" + getNumberOfAccounts() +
                 '}';
     }
+
 }

@@ -1,6 +1,6 @@
 package wsb.merito.po.start;
 
-import wsb.merito.po.banking.Account;
+import wsb.merito.po.banking.domain.Account;
 
 public class Start {
 
